@@ -4,9 +4,8 @@
     "license": "license",
     "authors": [
         {
-            "name": "author name",
-            "email": "author email",
-            "homepage": "author homepage"
+            "name": "Sven Walbroel",
+            "email": "sven.walbroel@gmail.com"
         }
     ],
     "homepage": "https://github.com/svnwa/inertiavuepaginator",
