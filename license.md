@@ -1,4 +1,4 @@
-# The license
+# The MIT License
 
 Copyright (c) author name Sven Walbroel
 
