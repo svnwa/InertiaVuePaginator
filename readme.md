@@ -2,10 +2,15 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
-[![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
 
-This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
+These are two basic Paginator components that work with the Laravel Jetstream/Breeze Inertia/Vue3 stack.
+
+1. A simple Paginator with just arrows left and right to paginate through Collection provided by e.g. the Inertia render function.
+![SimplePaginator](https://gist.githubusercontent.com/svnwa/3d3e297680f80821c553726ff13d09bd/raw/d8caa565e36aa597a31cac66139e87a322eca972/SimplePaginator.png)
+3. A "standard" paginator with feedback on the current and total amounts of the results, page numbers and arrows to navigate.
+![Paginator](https://gist.githubusercontent.com/svnwa/3d3e297680f80821c553726ff13d09bd/raw/d8caa565e36aa597a31cac66139e87a322eca972/Paginator.png)
+
+The components templates are analogous to the 'official' Blade templates provided by the basic paginator included by Laravel
 
 ## Installation
 
@@ -15,34 +20,61 @@ Via Composer
 $ composer require svnwa/inertiavuepaginator
 ```
 
-## Usage
-
-## Change log
-
-Please see the [changelog](changelog.md) for more information on what has changed recently.
-
-## Testing
-
-``` bash
-$ composer test
+Afterwards publish the Vue Components to use within your application
+```
+$ php artisan vendor:publish --tag=inertiavuepaginator
 ```
 
-## Contributing
+## Usage
 
-Please see [contributing.md](contributing.md) for details and a todolist.
+With Inertia just use the `paginate()` as you would in a PHP/Blade Laravel context. E.g.:
 
-## Security
+```
+public function index()
+{
+    return Inertia::render('MyUserList',[
+        'paginator' => User::paginate(10)
+    ]);
+}
+```
 
-If you discover any security related issues, please email author email instead of using the issue tracker.
+In your Vue component (`MyUserList.vue` in this example) use the paginator prop provided by the Inertia render function and dynamically bind it to your Paginator component as you would with any other prop.
+```
+<template>
+    <Paginator :paginator="paginator" />
+</template>
+
+export default {
+    props: {
+            paginator: Object
+        },
+}
+```
+
+OR 
+
+```
+<template>
+    <SimplePaginator :paginator="paginator" />
+</template>
+
+export default {
+    props: {
+            paginator: Object
+        },
+}
+```
+
+**Done. The Rest is handled by the Vue component itself**
+
 
 ## Credits
 
-- [author name][link-author]
-- [All Contributors][link-contributors]
+- [Sven Walbröl][link-author]
 
 ## License
 
-license. Please see the [license file](license.md) for more information.
+MIT. Please see the [license file](license.md) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/svnwa/inertiavuepaginator.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/svnwa/inertiavuepaginator.svg?style=flat-square
