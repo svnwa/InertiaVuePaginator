@@ -1,7 +1,7 @@
 {
     "name": "svnwa/inertiavuepaginator",
     "description": ":package_description",
-    "license": "MIT License",
+    "license": "MIT",
     "authors": [
         {
             "name": "Sven Walbroel",
