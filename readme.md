@@ -44,11 +44,14 @@ In your Vue component (`MyUserList.vue` in this example) use the paginator prop 
     <Paginator :paginator="paginator" />
 </template>
 
+<script>
+import Paginator from "@/Components/Paginator";
 export default {
     props: {
             paginator: Object
         },
 }
+</script>
 ```
 
 OR 
@@ -58,11 +61,14 @@ OR
     <SimplePaginator :paginator="paginator" />
 </template>
 
+<script>
+import SimplePaginator from "@/Components/SimplePaginator";
 export default {
     props: {
             paginator: Object
         },
 }
+</script>
 ```
 
 **Done. The Rest is handled by the Vue component itself**
