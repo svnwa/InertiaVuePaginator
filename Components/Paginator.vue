@@ -56,11 +56,11 @@
                             </svg>
                         </inertia-link>
                     <div v-for="link in paginator.links">
-                        <inertia-link v-if="!isFirstOrLastOrDots(link.label)" :class="{'bg-blue-200' : link.active===true}"
+                        <inertia-link v-if="!isFirstOrLastOrDots(link.label) && link.url !== null" :class="{'bg-blue-200' : link.active===true}"
                                       :href="link.url"
                                       class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-500 focus:z-10 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
                         >
-                            {{ link.label }}
+                            <spa v-html="link.label"></span>
                         </inertia-link>
                         <span v-else-if="link.label==='...'" aria-disabled="true">
                             <span
